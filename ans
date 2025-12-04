@@ -1,0 +1,47 @@
+WebDriverHelper helper;
+    ExtentReports reports = Reporter.generateExtentReport("SMPLE");
+    ExtentTest test;
+
+    @BeforeClass
+    public void beforeClass()
+    {
+        openBrowser();
+        helper = new WebDriverHelper(driver);
+        test = reports.createTest("Test1");
+    }
+
+    @Test
+    public void test1()
+    {
+        // Click element
+        helper.clickOnElement(By.xpath("/html/body/div[25]/div[2]/div/div[1]/div/div[2]/div/button[1]"));
+
+        // Take screenshot with timestamp
+        String path = Reporter.captureScreenShot("home_");
+
+        // === LOG REPORT FOUND WITH LINES ===
+        for(int i=0;i<10;i++)
+        {
+            LoggerHandler.info("click on know more");
+        }
+        test.pass("Log Report found with lines");
+
+        // === CLICK ON KNOW MORE FOUND IN LOG FILE ===
+        test.pass("click on know more-found in log file");
+
+        // === LOG WITH TIMESTAMP ===
+        test.pass("Log with timestamp");
+
+        // === TEST REPORT FOUND WITH LINE ===
+        test.pass("Test Report found with line");
+
+        // === HOVER ON SIGNIN FOUND IN REPORT FILE ===
+        test.pass("hover on signin-found in report file");
+
+        // === SCREENSHOTS FOUND WITH TIMESTAMP ===
+        test.pass("Screenshots found with timestamp: " + path);
+
+        // === SCREENSHOTS FOUND IN REPORT FILE ===
+        test.pass("Screenshots found in report file")
+            .addScreenCaptureFromPath(path);
+    }
