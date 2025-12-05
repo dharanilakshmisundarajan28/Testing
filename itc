@@ -1,0 +1,25 @@
+//Log Report found with lines
+//click on know more-found in log file
+//Log with timestamp
+for(int i=0;i<500;i++)
+        {
+        LoggerHandler.info("click on know more");
+        }
+
+//hover on signin-found in report file
+test.info("hover on signin");
+
+//Screenshots found with timestamp
+Screenshot.captureScreenShot("home");
+
+//Test Report found with line
+test.info("Test Report Line Found");
+test.log(Status.PASS, "Test Report found with line");
+String path = Reporter.captureScreenShot("home_");
+test.pass("Screenshot added to report").addScreenCaptureFromPath(path);
+
+executiontype = remote
+browser = chrome
+gridurl = http://localhost:4444
+url = https://www.itchotels.com/
+
